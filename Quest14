@@ -1,31 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-  int comparador(const void *a, const void *b) {
-  return ( *(int*)a - *(int*)b );
-}
+int comparador(const void *a, const void *b);
  
 int main () {
-  int i, n; //n = numero de elementos
+  int numb; 
+  float *x;
+    
   printf("Quantos elementos serao ordenadados? ");
-  scanf("%d",&n);
-   float *x;
-  x = malloc(n*sizeof(float));
+  scanf("%d",&numb);
 
-for(i = 0 ; i < n ; i++){
+  x = (float *)malloc(numb*sizeof(float));
+    
+  for(int i = 0 ; i < numb ; i++)
+  {
     printf("\nDigite o %dº numero - ",i+1);
     scanf("%f",&x[i]);
   }
  
    //ordena o array
-   qsort(x, n, sizeof(float),comparador);
+   qsort(x, numb, sizeof(float),comparador);
  
    //mostra os valores do array
-   for( i = 0 ; i < n; i++ ) {
-      printf("%g ", x[i]);
+   printf("\n\nOrdenando os elementos, tem-se:\n");
+   for( int i = 0 ; i < numb; i++ ) 
+   {
+      printf("%0.1f\n", x[i]);
    }
 
   free(x);
  
    return(0);
+}
+int comparador(const void *a, const void *b) 
+{
+  return ( *(int*)a - *(int*)b );
 }
