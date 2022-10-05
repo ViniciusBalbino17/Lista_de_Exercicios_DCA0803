@@ -2,31 +2,42 @@
 #include <stdlib.h>
 
 int main(void) {
-
-  int i = 0, j = 0, n = 3, aux; // n = quantidade de elementos
-  printf("Quantos elementos serao ordenadados? ");
-  scanf("%d",&n);
+    
+  int numb, aux;
   float *x;
+    
+  printf("Quantos elementos serao ordenadados? ");
+  scanf("%d",&numb);
+    
+  x =(float *) malloc(numb*sizeof(float));
   
-  for(i = 0 ; i < n ; i++)
+  for(int i = 0 ; i < numb ; i++)
   {
-    printf("\nDigite o %dº numero - ",i+1);
-    scanf("%f",&x[i]);
+      printf("\nDigite o %dº numero - ",i+1);
+      scanf("%f",&x[i]);
   }
 
-  for(i = 0 ; i < n ; i++){
-    for(j = i ; j < n; j++){
-      if (*(x + i) > *(x + j)){
-        aux = *(x + i);
-        *(x + i) = *(x + j);
-        *(x + j) = aux;
-        }
+  for(int i = 0 ; i < numb ; i++)
+  {
+      for(int j = i ; j < numb; j++)
+      {
+          if (*(x + i) > *(x + j))
+          {
+              aux = *(x + i);
+              *(x + i) = *(x + j);
+              *(x + j) = aux;
+          }
       }
-    }
+  }
 
-  printf("Ordenando os elementos, tem-se:\n");
-  for (i = 0 ; i < n ; i++)
-    printf("%g\n",*(x + i));
+  
+  printf("\n\nOrdenando os elementos, tem-se:\n");
+  for (int i = 0 ; i < numb ; i++)
+  {
+      printf("%g\n",*(x + i));
+  }
+ 
+  free(x);
 
   return 0;
 }
