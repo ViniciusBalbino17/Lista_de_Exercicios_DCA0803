@@ -1,1 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void area(float raio, float altura);
+void volume(float raio,float altura);
+
+int main(void) 
+{
+    void (*pt_array[])(float,float) = {area,volume};
+    int opcao;
+    float raio, altura;
+
+    printf("Digite uma opcao\nArea-0...Volume_1\n\n");
+    printf("Digite a opção:\n");
+    scanf("%d",&opcao);
+
+    printf("\nDigite o raio do cilindro em centimentros:\n");
+    scanf("%f",&raio);
+     printf("\nDigite a altura do cilindro em centimetros:\n");
+    scanf("%f",&altura);
+    printf("\n\n");
+
+    (*pt_array[opcao])(raio,altura);
+    
+  return 0;
+}
+void area(float raio, float altura)
+{
+    float area1,area2, areaT;
+    float PI=3;
+
+    area1 = 2*(PI*pow(raio,2));
+    area2 = 2*PI*raio*altura;
+    areaT = area1 + area2;
+
+    printf("AREA DO CILINDRO: %0.2f cm²",areaT);
+}
+void volume(float raio,float altura)
+{
+    float areaB,volume;
+    float PI=3;
+
+    areaB = PI*pow(raio,2);
+    volume = areaB*altura;
+
+    printf("VOLUME DO CILINDRO: %0.2f cm³",volume);
+}
 
