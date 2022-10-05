@@ -16,7 +16,7 @@ int main(void)
   printf("Quantos elementos serao ordenadados? ");
   scanf("%d",&numb);
 
-  x = malloc(numb*sizeof(float));
+  x = (float *)malloc(numb*sizeof(float));
   
   for(int i = 0 ; i < numb ; i++)
   {
@@ -61,5 +61,3 @@ void arrange (float *pont,int elem,int(*comparador)(float *a, float *b))
      printf("%g\n",*(pont + i));     
   }
 }
-
-
